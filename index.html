@@ -17,7 +17,7 @@
         function getDog(){
             $.getJSON("https://api.thecatapi.com/v1/images/search", function(data) {
                 $(".api-details").html("<p>API Response: " + JSON.stringify(data) + "</p>");
-                $(".image-content").html("<img src='" + data.message + "' style='max-width: 100%; height: auto;'>");
+                $(".image-content").html("<img src='" + data.url + "' style='max-width: 100%; height: auto;'>");
             });
         }
         $('.get-dog').click(function(){
