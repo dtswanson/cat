@@ -9,18 +9,27 @@
 </head>
 <body style="padding: 20px; text-align: center;">
     <h1>Swanson's CAT API Demo</h1>
-    <button class="btn btn-primary get-cat">I need a cat image right Meow!</button>
+    <button class="btn btn-primary get-cat">Fetch a Cat Image</button>
+    <div class="fact-content" style="margin-top: 20px;"></div>
     <div class="image-content" style="margin-top: 20px;"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" type="text/javascript"></script>
     <script type="text/javascript">
-        function getCat(){
+        function getCat() {
             $.getJSON("https://api.thecatapi.com/v1/images/search", function(data) {
                 $(".image-content").html("<img src='" + data[0].url + "' style='max-width: 100%; height: auto;'>");
             });
         }
-        $('.get-cat').click(function(){
+
+        function getCatFact() {
+            $.getJSON("https://meowfacts.herokuapp.com/", function(data) {
+                $(".fact-content").html("<p><b>Cat Fact:</b> " + data.data[0] + "</p>");
+            });
+        }
+
+        $('.get-cat').click(function() {
             getCat();
+            getCatFact();
         });
     </script>
 </body>
